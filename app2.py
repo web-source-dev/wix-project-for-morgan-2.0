@@ -14,6 +14,9 @@ from selenium.webdriver.support import expected_conditions as EC
 # Configure matplotlib for headless environment
 plt.switch_backend('Agg')
 
+# Configure port for Render deployment
+port = int(os.environ.get('PORT', 8501))
+
 def setup_driver():
     """Configure ChromeDriver for Streamlit Cloud"""
     chrome_options = Options()
@@ -67,6 +70,8 @@ def get_metal_prices():
     finally:
         driver.quit()
 
+if __name__ == '__main__':
+    st.run(port=port)
 # Rest of your original code remains exactly the same...
 # [Include all your existing Streamlit UI code from the original file]
 # [From the def get_metal_data() function through to the end of the file]
